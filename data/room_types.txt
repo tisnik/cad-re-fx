@@ -1,0 +1,35 @@
+1,Kancelář
+3,Učebna
+5,Čekárna
+8,Sklad
+9,Sklad hořlavin
+10,Archiv
+11,WC
+12,WC muži
+13,WC ženy
+16,Sprchy
+17,Koupelna
+18,Šatna
+21,Chodba
+22,Schodiště
+23,Předsíň
+25,Hala
+32,Kotelna
+33,Uhelna
+35,Výměník
+38,Půda
+46,Elektrorozvodna
+48,Ústředna
+50,Technologie
+54,Prodejna
+57,Jídelna
+58,Kuchyň
+65,Pokoj
+70,Info centrum
+73,Provozní místnost
+74,Vrátnice
+76,Garáž osobní
+77,Garáž nákladní
+80,Úkryt CO
+81,Dílna
+93,Ostatní provoz
