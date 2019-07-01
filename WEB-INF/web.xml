@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <!-- main section {{{ -->
+
+    <session-config>
+        <session-timeout>
+            60
+        </session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>
+            Index
+        </welcome-file>
+    </welcome-file-list>
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>utf-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+
+    <!-- }}} -->
+    <!-- listeners {{{ -->
+
+    <listener>
+        <listener-class>
+            cz.tisnik.cadgfx.listeners.ContextListener
+        </listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>
+            cz.tisnik.cadgfx.listeners.SessionListener
+        </listener-class>
+    </listener>
+
+    <!-- }}} -->
+    <!-- parameters {{{ -->
+
+    <context-param>
+        <!-- was used on web page footers -->
+        <param-name>footer_copyright</param-name>
+        <param-value>(c) 2009, ČD-Telematika, a.s.</param-value>
+    </context-param>
+
+    <context-param>
+        <!-- was used on web page footers -->
+        <param-name>webmaster</param-name>
+        <param-value>Pavel Tišnovský</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>version</param-name>
+        <param-value>0.0.4</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>modification_date</param-name>
+        <param-value>2009-11-03</param-value>
+    </context-param>
+
+    <context-param>
+        <!-- width of rendered image -->
+        <param-name>image_width</param-name>
+        <param-value>1024</param-value>
+    </context-param>
+
+    <context-param>
+        <!-- height of rendered image -->
+        <param-name>image_height</param-name>
+        <param-value>768</param-value>
+    </context-param>
+
+    <context-param>
+        <!-- whether to display alert dialog when sending AOID_SUB to SAP -->
+        <param-name>debug_sapevent</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <context-param>
+        <!-- flag used for enabling or disabling showing floor's attributes -->
+        <param-name>show_attributes</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <context-param>
+        <!-- whether to display additional informations about selected room -->
+        <param-name>debug_selected_floor</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <context-param>
+        <!-- flag used for enabling or disabling administrator's commands -->
+        <param-name>enable_admin_commands</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>default_building</param-name>
+        <!-- <param-value>I000100123456</param-value> -->
+        <param-value>Branna</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>default_floor</param-name>
+        <!-- <param-value>1031.2</param-value> -->
+        <param-value>112100252.2P</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>default_floor_variant</param-name>
+        <param-value>20070701</param-value>
+    </context-param>
+
+    <context-param>
+        <!-- name of parameter used for transferring floor identification from SAP to CAD-RE-FX -->
+        <param-name>param_name_from_sap_floor_id</param-name>
+        <param-value>AOID</param-value>
+        <!-- was INTRENO_FL -->
+    </context-param>
+
+    <context-param>
+        <!-- name of parameter used for transferring room identification from SAP to CAD-RE-FX -->
+        <param-name>param_name_from_sap_room_id</param-name>
+        <param-value>AOID_SUB</param-value>
+        <!-- was INTRENO_RM -->
+    </context-param>
+
+    <context-param>
+        <!-- name of parameter used for transferring floor valid-from date from SAP to CAD-RE-FX -->
+        <param-name>param_name_from_sap_version</param-name>
+        <param-value>VAL_FROM</param-value>
+        <!-- was VERSION -->
+    </context-param>
+
+    <context-param>
+        <!-- name of parameter used for transferring room identification from CAD-RE-FX to SAP -->
+        <param-name>param_name_to_sap_room_id</param-name>
+        <param-value>AOID_SUB</param-value>
+        <!-- was INTRENO_RM -->
+    </context-param>
+
+    <!-- }}} -->
+
+    <!-- servlets {{{ -->
+
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <display-name>Index</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.Index</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LeftMenu</servlet-name>
+        <display-name>LeftMenu</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.LeftMenu</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ImageRenderer</servlet-name>
+        <display-name>ImageRenderer</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.ImageRenderer</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>select_room</servlet-name>
+        <display-name>select_room</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.SelectRoom</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Info</servlet-name>
+        <display-name>Info</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.Info</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Help</servlet-name>
+        <display-name>Help</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.Help</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ResolveSapHref</servlet-name>
+        <display-name>ResolveSapHref</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.ResolveSapHref</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ReloadDataModel</servlet-name>
+        <display-name>ReloadDataModel</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.ReloadDataModel</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Maps</servlet-name>
+        <display-name>Maps</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.Maps</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MapsLeftMenu</servlet-name>
+        <display-name>MapsLeftMenu</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.MapsLeftMenu</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MapRenderer</servlet-name>
+        <display-name>MapRenderer</display-name>
+        <servlet-class>cz.tisnik.cadgfx.servlets.MapRenderer</servlet-class>
+    </servlet>
+
+    <!-- }}} -->
+    <!-- servlet mappings {{{ -->
+
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LeftMenu</servlet-name>
+        <url-pattern>/LeftMenu</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ImageRenderer</servlet-name>
+        <url-pattern>/ImageRenderer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>select_room</servlet-name>
+        <url-pattern>/select_room</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Info</servlet-name>
+        <url-pattern>/Info</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Help</servlet-name>
+        <url-pattern>/Help</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ResolveSapHref</servlet-name>
+        <url-pattern>/ResolveSapHref</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ReloadDataModel</servlet-name>
+        <url-pattern>/ReloadDataModel</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Maps</servlet-name>
+        <url-pattern>/Maps</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MapsLeftMenu</servlet-name>
+        <url-pattern>/MapsLeftMenu</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MapRenderer</servlet-name>
+        <url-pattern>/MapRenderer</url-pattern>
+    </servlet-mapping>
+
+    <!-- }}} -->
+
+</web-app>
+
+<!--- vim: foldmethod=marker
+-->
