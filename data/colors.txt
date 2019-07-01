@@ -1,0 +1,12 @@
+ff0000
+ffff00
+0000ff
+00ff00
+ff00ff
+00ffff
+90ee90
+f0c0cb
+e6e6fa
+ffa500
+00ffcc
+ff40c0
