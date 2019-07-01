@@ -1,0 +1,6 @@
+OHLA,Požadavek založen
+PRZA,Zakázka přiřazena
+ZPHL,Požadavek rozpracován
+ODHL,Požadavek odložen
+KOHL,Požadavek dokončen
+BEZP,Bez požadavku
